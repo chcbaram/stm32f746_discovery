@@ -11,15 +11,11 @@ Screen1ViewBase::Screen1ViewBase() :
     box1.setPosition(0, 0, 480, 272);
     box1.setColor(touchgfx::Color::getColorFrom24BitRGB(53, 75, 145));
 
-    box2.setPosition(234, 168, 217, 76);
-    box2.setColor(touchgfx::Color::getColorFrom24BitRGB(240, 0, 0));
-
-    button1.setXY(143, 83);
+    button1.setXY(155, 106);
     button1.setBitmaps(Bitmap(BITMAP_BLUE_BUTTONS_ROUND_SMALL_ID), Bitmap(BITMAP_BLUE_BUTTONS_ROUND_SMALL_PRESSED_ID));
     button1.setAction(buttonCallback);
 
     add(box1);
-    add(box2);
     add(button1);
 }
 

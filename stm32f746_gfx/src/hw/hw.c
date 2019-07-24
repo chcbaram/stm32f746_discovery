@@ -25,10 +25,7 @@ void hwInit(void)
 
   ledInit();
   sdramInit();
-  //ltdcInit();
   uartInit();
   i2cInit();
   uartOpen(_DEF_UART1, 57600);
-
-  //tsInit(800, 480);
 }

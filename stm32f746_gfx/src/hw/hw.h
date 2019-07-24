@@ -24,7 +24,7 @@
 #include "sdram.h"
 #include "i2c.h"
 #include "ts.h"
-
+#include "qspi.h"
 
 
 

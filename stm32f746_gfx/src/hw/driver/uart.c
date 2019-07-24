@@ -64,13 +64,7 @@ typedef struct
 static uart_t uart_tbl[UART_MAX_CH];
 
 
-UART_HandleTypeDef huart3;
-
-
-static UART_HandleTypeDef *p_uart_handle[UART_MAX_CH] =
-    {
-        &huart3
-    };
+UART_HandleTypeDef huart1;
 
 
 
@@ -119,15 +113,15 @@ bool uartOpen(uint8_t channel, uint32_t baud)
       p_uart = &uart_tbl[channel];
 
       p_uart->baud     = baud;
-
       p_uart->rx_mode  = UART_MODE_INTERRUPT;
       p_uart->tx_mode  = UART_MODE_POLLING;
       p_uart->hw_driver = UART_HW_STM32_UART;
 
-      p_uart->handle =  p_uart_handle[channel];
-
-
-      p_uart->handle->Instance          = USART3;
+      if (channel == _DEF_UART1)
+      {
+        p_uart->handle =  &huart1;
+        p_uart->handle->Instance = USART1;
+      }
       p_uart->handle->Init.BaudRate     = baud;
       p_uart->handle->Init.WordLength   = UART_WORDLENGTH_8B;
       p_uart->handle->Init.StopBits     = UART_STOPBITS_1;
@@ -376,9 +370,9 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 
 
 
-void USART3_IRQHandler(void)
+void USART1_IRQHandler(void)
 {
-   HAL_UART_IRQHandler(&huart3);
+   HAL_UART_IRQHandler(&huart1);
 }
 
 void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
@@ -387,57 +381,48 @@ void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
   GPIO_InitTypeDef GPIO_InitStruct = {0};
 
 
-  if(uartHandle->Instance==USART3)
+  if(uartHandle->Instance==USART1)
   {
-  /* USER CODE BEGIN USART3_MspInit 0 */
+    /* USART1 clock enable */
+    __HAL_RCC_USART1_CLK_ENABLE();
 
-
-  /* USER CODE END USART3_MspInit 0 */
-    /* USART3 clock enable */
-    __HAL_RCC_USART3_CLK_ENABLE();
-
+    __HAL_RCC_GPIOA_CLK_ENABLE();
     __HAL_RCC_GPIOB_CLK_ENABLE();
     /**USART3 GPIO Configuration
-    PB10     ------> USART3_TX
-    PB11     ------> USART3_RX
+    PA9     ------> USART1_TX
+    PB7     ------> USART1_RX
     */
-    GPIO_InitStruct.Pin = GPIO_PIN_10|GPIO_PIN_11;
+    GPIO_InitStruct.Pin = GPIO_PIN_9;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_PULLUP;
     GPIO_InitStruct.Speed = GPIO_SPEED_HIGH;
-    GPIO_InitStruct.Alternate = GPIO_AF7_USART3;
+    GPIO_InitStruct.Alternate = GPIO_AF7_USART1;
+    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+    GPIO_InitStruct.Pin = GPIO_PIN_7;
     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-    /* USART3 interrupt Init */
-    HAL_NVIC_SetPriority(USART3_IRQn, 6, 0);
-    HAL_NVIC_EnableIRQ(USART3_IRQn);
-  /* USER CODE BEGIN USART3_MspInit 1 */
-
-  /* USER CODE END USART3_MspInit 1 */
+    /* USART1 interrupt Init */
+    HAL_NVIC_SetPriority(USART1_IRQn, 6, 0);
+    HAL_NVIC_EnableIRQ(USART1_IRQn);
   }
 }
 
 void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
 {
 
-  if(uartHandle->Instance==USART3)
+  if(uartHandle->Instance==USART1)
   {
-  /* USER CODE BEGIN USART3_MspDeInit 0 */
-
-  /* USER CODE END USART3_MspDeInit 0 */
     /* Peripheral clock disable */
-    __HAL_RCC_USART3_CLK_DISABLE();
+    __HAL_RCC_USART1_CLK_DISABLE();
 
     /**USART3 GPIO Configuration
-    PB10     ------> USART3_TX
-    PB11     ------> USART3_RX
+    PA9     ------> USART1_TX
+    PB7     ------> USART1_RX
     */
-    HAL_GPIO_DeInit(GPIOB, GPIO_PIN_10|GPIO_PIN_11);
+    HAL_GPIO_DeInit(GPIOA, GPIO_PIN_9);
 
     /* USART3 interrupt Deinit */
-    HAL_NVIC_DisableIRQ(USART3_IRQn);
-  /* USER CODE BEGIN USART3_MspDeInit 1 */
-
-  /* USER CODE END USART3_MspDeInit 1 */
+    HAL_NVIC_DisableIRQ(USART1_IRQn);
   }
 }

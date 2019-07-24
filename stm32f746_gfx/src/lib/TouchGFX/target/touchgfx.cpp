@@ -57,4 +57,7 @@ int touchgfxMain(void)
                 NULL,
                 configGUI_TASK_PRIORITY,
                 NULL);
+
+
+    return 0;
 }

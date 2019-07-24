@@ -287,6 +287,10 @@ void hw_init()
     //BSP_QSPI_MemoryMappedMode();
     //HAL_NVIC_DisableIRQ(QUADSPI_IRQn);
 
+    qspiInit();
+    qspiEnableMemoryMappedMode();
+    HAL_NVIC_DisableIRQ(QUADSPI_IRQn);
+
 
     HAL_MPU_Disable();
 
