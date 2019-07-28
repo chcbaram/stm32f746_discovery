@@ -10,6 +10,10 @@
 #include <touchgfx/transitions/NoTransition.hpp>
 #include <touchgfx/transitions/SlideTransition.hpp>
 #include <touchgfx/transitions/SlideTransition.hpp>
+#include <touchgfx/transitions/SlideTransition.hpp>
+#include <touchgfx/transitions/SlideTransition.hpp>
+#include <touchgfx/transitions/SlideTransition.hpp>
+#include <touchgfx/transitions/SlideTransition.hpp>
 
 #include <gui/common/FrontendApplication.hpp>
 #include <gui/model/Model.hpp>
@@ -18,6 +22,8 @@
 #include <gui/screen1_screen/Screen1Presenter.hpp>
 #include <gui/screen2_screen/Screen2View.hpp>
 #include <gui/screen2_screen/Screen2Presenter.hpp>
+#include <gui/screen3_screen/Screen3View.hpp>
+#include <gui/screen3_screen/Screen3Presenter.hpp>
 
 
 /**
@@ -42,7 +48,8 @@ public:
      */
     typedef meta::TypeList< Screen1View,
             meta::TypeList< Screen2View,
-            meta::Nil >
+            meta::TypeList< Screen3View,
+            meta::Nil > >
             > GeneratedViewTypes;
 
     /**
@@ -56,7 +63,8 @@ public:
      */
     typedef meta::TypeList< Screen1Presenter,
             meta::TypeList< Screen2Presenter,
-            meta::Nil >
+            meta::TypeList< Screen3Presenter,
+            meta::Nil > >
             > GeneratedPresenterTypes;
 
     /**
@@ -71,7 +79,9 @@ public:
     typedef meta::TypeList< NoTransition,
             meta::TypeList< SlideTransition<EAST>,
             meta::TypeList< SlideTransition<WEST>,
-            meta::Nil > >
+            meta::TypeList< SlideTransition<SOUTH>,
+            meta::TypeList< SlideTransition<NORTH>,
+            meta::Nil > > > >
             > GeneratedTransitionTypes;
 
     /**

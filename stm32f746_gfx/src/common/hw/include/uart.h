@@ -24,6 +24,7 @@ extern "C" {
 
 bool     uartInit(void);
 bool     uartOpen(uint8_t channel, uint32_t baud);
+bool     uartIsOpen(uint8_t channel);
 bool     uartClose(uint8_t channel);
 uint32_t uartAvailable(uint8_t channel);
 void     uartFlush(uint8_t channel);

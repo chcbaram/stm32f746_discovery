@@ -8,7 +8,10 @@
 #include <mvp/View.hpp>
 #include <gui/screen2_screen/Screen2Presenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
-#include <touchgfx/widgets/Button.hpp>
+#include <touchgfx/widgets/ButtonWithIcon.hpp>
+#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <touchgfx/EasingEquations.hpp>
+#include <touchgfx/mixins/MoveAnimator.hpp>
 
 class Screen2ViewBase : public touchgfx::View<Screen2Presenter>
 {
@@ -17,6 +20,15 @@ public:
     virtual ~Screen2ViewBase() {}
 
     virtual void setupScreen();
+    virtual void afterTransition();
+
+    /*
+     * Custom Action Handlers
+     */
+    virtual void clickMenu()
+    {
+        // Override and implement this function in Screen2View
+    }
 
 protected:
     FrontendApplication& application() {
@@ -27,7 +39,10 @@ protected:
      * Member Declarations
      */
     touchgfx::Box box1;
-    touchgfx::Button button1;
+    touchgfx::MoveAnimator< touchgfx::ButtonWithIcon > buttonWithIcon_Home;
+    touchgfx::TextAreaWithOneWildcard textArea1;
+    touchgfx::ButtonWithIcon buttonWithIcon_Menu;
+    touchgfx::MoveAnimator< touchgfx::ButtonWithIcon > buttonWithIcon_Setup;
 
 private:
 

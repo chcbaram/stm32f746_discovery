@@ -4,19 +4,23 @@
 #include <gui_generated/screen1_screen/Screen1ViewBase.hpp>
 #include <touchgfx/Color.hpp>
 #include "BitmapDatabase.hpp"
+#include <texts/TextKeysAndLanguages.hpp>
 
 Screen1ViewBase::Screen1ViewBase() :
     buttonCallback(this, &Screen1ViewBase::buttonCallbackHandler)
 {
     box1.setPosition(0, 0, 480, 272);
-    box1.setColor(touchgfx::Color::getColorFrom24BitRGB(53, 75, 145));
+    box1.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
 
-    button1.setXY(155, 106);
-    button1.setBitmaps(Bitmap(BITMAP_BLUE_BUTTONS_ROUND_SMALL_ID), Bitmap(BITMAP_BLUE_BUTTONS_ROUND_SMALL_PRESSED_ID));
-    button1.setAction(buttonCallback);
+    buttonWithLabel1.setXY(22, 19);
+    buttonWithLabel1.setBitmaps(Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
+    buttonWithLabel1.setLabelText(TypedText(T_SINGLEUSEID3));
+    buttonWithLabel1.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    buttonWithLabel1.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    buttonWithLabel1.setAction(buttonCallback);
 
     add(box1);
-    add(button1);
+    add(buttonWithLabel1);
 }
 
 void Screen1ViewBase::setupScreen()
@@ -26,10 +30,10 @@ void Screen1ViewBase::setupScreen()
 
 void Screen1ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
 {
-    if (&src == &button1)
+    if (&src == &buttonWithLabel1)
     {
         //Interaction1
-        //When button1 clicked change screen to Screen2
+        //When buttonWithLabel1 clicked change screen to Screen2
         //Go to Screen2 with screen transition towards East
         application().gotoScreen2ScreenSlideTransitionEast();
     }

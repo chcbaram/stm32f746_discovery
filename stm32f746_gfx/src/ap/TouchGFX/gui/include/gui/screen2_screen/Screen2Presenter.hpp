@@ -27,6 +27,9 @@ public:
 
     virtual ~Screen2Presenter() {};
 
+    virtual void updateConsole(void);
+    virtual void addConsoleData(const char *p_data, int32_t length);
+
 private:
     Screen2Presenter();
 

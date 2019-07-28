@@ -8,8 +8,11 @@
 
 const uint16_t BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID = 0; // Size: 170x60 pixels
 const uint16_t BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID = 1; // Size: 170x60 pixels
-const uint16_t BITMAP_BLUE_BUTTONS_ROUND_SMALL_ID = 2; // Size: 170x60 pixels
-const uint16_t BITMAP_BLUE_BUTTONS_ROUND_SMALL_PRESSED_ID = 3; // Size: 170x60 pixels
+const uint16_t BITMAP_BLUE_BUTTONS_SQUARE_ICON_BUTTON_ID = 2; // Size: 60x60 pixels
+const uint16_t BITMAP_BLUE_BUTTONS_SQUARE_ICON_BUTTON_PRESSED_ID = 3; // Size: 60x60 pixels
+const uint16_t BITMAP_BLUE_ICONS_ADD_NEW_32_ID = 4; // Size: 29x29 pixels
+const uint16_t BITMAP_BLUE_ICONS_HOME_32_ID = 5; // Size: 30x29 pixels
+const uint16_t BITMAP_BLUE_ICONS_SETTINGS_32_ID = 6; // Size: 30x30 pixels
 
 namespace BitmapDatabase
 {

@@ -15,3 +15,15 @@ void Screen2Presenter::deactivate()
 {
 
 }
+
+void Screen2Presenter::updateConsole(void)
+{
+  view.updateConsole();
+}
+
+void Screen2Presenter::addConsoleData(const char *p_data, int32_t length)
+{
+  view.addConsoleData(p_data, length);
+}
+
+

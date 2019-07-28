@@ -6,6 +6,30 @@
 using namespace touchgfx;
 #endif
 
+// NanumGothicCoding_15_4bpp
+extern const touchgfx::GlyphNode glyphs_NanumGothicCoding_15_4bpp[];
+extern const uint8_t unicodes_NanumGothicCoding_15_4bpp[];
+extern const touchgfx::KerningNode kerning_NanumGothicCoding_15_4bpp[];
+touchgfx::InternalFlashFont& getFont_NanumGothicCoding_15_4bpp();
+
+touchgfx::InternalFlashFont& getFont_NanumGothicCoding_15_4bpp()
+{
+    static touchgfx::InternalFlashFont NanumGothicCoding_15_4bpp(glyphs_NanumGothicCoding_15_4bpp, 91, 15, 3, 4, 1, 0, unicodes_NanumGothicCoding_15_4bpp, kerning_NanumGothicCoding_15_4bpp, 63, 0);
+    return NanumGothicCoding_15_4bpp;
+}
+
+// NanumGothicCoding_20_4bpp
+extern const touchgfx::GlyphNode glyphs_NanumGothicCoding_20_4bpp[];
+extern const uint8_t unicodes_NanumGothicCoding_20_4bpp[];
+extern const touchgfx::KerningNode kerning_NanumGothicCoding_20_4bpp[];
+touchgfx::InternalFlashFont& getFont_NanumGothicCoding_20_4bpp();
+
+touchgfx::InternalFlashFont& getFont_NanumGothicCoding_20_4bpp()
+{
+    static touchgfx::InternalFlashFont NanumGothicCoding_20_4bpp(glyphs_NanumGothicCoding_20_4bpp, 20, 20, 4, 4, 0, 0, unicodes_NanumGothicCoding_20_4bpp, kerning_NanumGothicCoding_20_4bpp, 63, 0);
+    return NanumGothicCoding_20_4bpp;
+}
+
 // verdana_10_4bpp
 extern const touchgfx::GlyphNode glyphs_verdana_10_4bpp[];
 extern const uint8_t unicodes_verdana_10_4bpp[];
@@ -26,7 +50,7 @@ touchgfx::InternalFlashFont& getFont_verdana_20_4bpp();
 
 touchgfx::InternalFlashFont& getFont_verdana_20_4bpp()
 {
-    static touchgfx::InternalFlashFont verdana_20_4bpp(glyphs_verdana_20_4bpp, 0, 20, 0, 4, 0, 0, unicodes_verdana_20_4bpp, kerning_verdana_20_4bpp, 0, 0);
+    static touchgfx::InternalFlashFont verdana_20_4bpp(glyphs_verdana_20_4bpp, 90, 20, 4, 4, 1, 1, unicodes_verdana_20_4bpp, kerning_verdana_20_4bpp, 0, 0);
     return verdana_20_4bpp;
 }
 

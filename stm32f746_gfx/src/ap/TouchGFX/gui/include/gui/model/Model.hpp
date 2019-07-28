@@ -1,6 +1,8 @@
 #ifndef MODEL_HPP
 #define MODEL_HPP
 
+#include <stdint.h>
+
 class ModelListener;
 
 /**
@@ -35,11 +37,19 @@ public:
      * the ModelListener interface.
      */
     void tick();
+    void openPort(uint8_t channel, uint32_t baud);
+    void closePort(uint8_t channel);
+    void getPortInfo(bool &is_open, uint8_t &channel, uint32_t &baud);
+
 protected:
     /**
      * Pointer to the currently active presenter.
      */
     ModelListener* modelListener;
+
+    bool     port_open;
+    uint8_t  port_channel;
+    uint32_t port_baud;
 };
 
 #endif /* MODEL_HPP */

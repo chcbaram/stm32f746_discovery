@@ -145,6 +145,11 @@ bool uartOpen(uint8_t channel, uint32_t baud)
   return ret;
 }
 
+bool uartIsOpen(uint8_t channel)
+{
+  return uart_tbl[channel].is_open;
+}
+
 void uartSetTxDoneISR(uint8_t channel, void (*func)(void))
 {
   uart_tbl[channel].txDoneISR = func;
@@ -183,6 +188,7 @@ bool uartClose(uint8_t channel)
     }
   }
 
+  uart_tbl[channel].is_open = false;
 
   return ret;
 }

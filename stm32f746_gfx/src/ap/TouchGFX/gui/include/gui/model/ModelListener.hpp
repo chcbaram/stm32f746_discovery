@@ -2,6 +2,7 @@
 #define MODELLISTENER_HPP
 
 #include <gui/model/Model.hpp>
+#include <stdint.h>
 
 /**
  * ModelListener is the interface through which the Model can inform the currently
@@ -27,6 +28,13 @@ public:
     {
         model = m;
     }
+
+    virtual void updateConsole(void) {};
+    virtual void addConsoleData(const char *p_data, int32_t length) {};
+    virtual void openPort(uint8_t channel, uint32_t baud) {};
+    virtual void closePort(uint8_t channel) {};
+    virtual void getPortInfo(bool &is_open, uint8_t &channel, uint32_t &baud) {};
+
 protected:
     Model* model;
 };

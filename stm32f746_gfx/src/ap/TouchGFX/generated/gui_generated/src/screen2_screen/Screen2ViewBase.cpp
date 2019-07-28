@@ -4,19 +4,39 @@
 #include <gui_generated/screen2_screen/Screen2ViewBase.hpp>
 #include <touchgfx/Color.hpp>
 #include "BitmapDatabase.hpp"
+#include <texts/TextKeysAndLanguages.hpp>
 
 Screen2ViewBase::Screen2ViewBase() :
     buttonCallback(this, &Screen2ViewBase::buttonCallbackHandler)
 {
     box1.setPosition(0, 0, 480, 272);
-    box1.setColor(touchgfx::Color::getColorFrom24BitRGB(217, 38, 38));
+    box1.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
 
-    button1.setXY(168, 97);
-    button1.setBitmaps(Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
-    button1.setAction(buttonCallback);
+    buttonWithIcon_Home.setXY(420, 0);
+    buttonWithIcon_Home.setBitmaps(Bitmap(BITMAP_BLUE_BUTTONS_SQUARE_ICON_BUTTON_ID), Bitmap(BITMAP_BLUE_BUTTONS_SQUARE_ICON_BUTTON_PRESSED_ID), Bitmap(BITMAP_BLUE_ICONS_HOME_32_ID), Bitmap(BITMAP_BLUE_ICONS_HOME_32_ID));
+    buttonWithIcon_Home.setIconXY(15, 16);
+    buttonWithIcon_Home.setAction(buttonCallback);
+
+    textArea1.setXY(5, 1);
+    textArea1.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
+    textArea1.setLinespacing(0);
+    textArea1.setTypedText(TypedText(T_SINGLEUSEID4));
+
+    buttonWithIcon_Menu.setXY(420, 212);
+    buttonWithIcon_Menu.setBitmaps(Bitmap(BITMAP_BLUE_BUTTONS_SQUARE_ICON_BUTTON_ID), Bitmap(BITMAP_BLUE_BUTTONS_SQUARE_ICON_BUTTON_PRESSED_ID), Bitmap(BITMAP_BLUE_ICONS_ADD_NEW_32_ID), Bitmap(BITMAP_BLUE_ICONS_ADD_NEW_32_ID));
+    buttonWithIcon_Menu.setIconXY(16, 16);
+    buttonWithIcon_Menu.setAction(buttonCallback);
+
+    buttonWithIcon_Setup.setXY(420, 55);
+    buttonWithIcon_Setup.setBitmaps(Bitmap(BITMAP_BLUE_BUTTONS_SQUARE_ICON_BUTTON_ID), Bitmap(BITMAP_BLUE_BUTTONS_SQUARE_ICON_BUTTON_PRESSED_ID), Bitmap(BITMAP_BLUE_ICONS_SETTINGS_32_ID), Bitmap(BITMAP_BLUE_ICONS_SETTINGS_32_ID));
+    buttonWithIcon_Setup.setIconXY(15, 15);
+    buttonWithIcon_Setup.setAction(buttonCallback);
 
     add(box1);
-    add(button1);
+    add(buttonWithIcon_Home);
+    add(textArea1);
+    add(buttonWithIcon_Menu);
+    add(buttonWithIcon_Setup);
 }
 
 void Screen2ViewBase::setupScreen()
@@ -24,13 +44,43 @@ void Screen2ViewBase::setupScreen()
 
 }
 
+//Called when the screen is done with transition/load
+void Screen2ViewBase::afterTransition()
+{
+    //Interaction2
+    //When screen is entered move buttonWithIcon_Home
+    //Move buttonWithIcon_Home to x:420, y:0 with LinearIn easing in 100 ms (6 Ticks)
+    buttonWithIcon_Home.clearMoveAnimationEndedAction();
+    buttonWithIcon_Home.startMoveAnimation(420, 0, 6, EasingEquations::linearEaseIn, EasingEquations::linearEaseIn);
+
+    //Interaction3
+    //When screen is entered move buttonWithIcon_Setup
+    //Move buttonWithIcon_Setup to x:420, y:55 with LinearIn easing in 100 ms (6 Ticks)
+    buttonWithIcon_Setup.clearMoveAnimationEndedAction();
+    buttonWithIcon_Setup.startMoveAnimation(420, 55, 6, EasingEquations::linearEaseIn, EasingEquations::linearEaseIn);
+}
+
 void Screen2ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
 {
-    if (&src == &button1)
+    if (&src == &buttonWithIcon_Home)
     {
         //Interaction1
-        //When button1 clicked change screen to Screen1
+        //When buttonWithIcon_Home clicked change screen to Screen1
         //Go to Screen1 with screen transition towards West
         application().gotoScreen1ScreenSlideTransitionWest();
+    }
+    else if (&src == &buttonWithIcon_Menu)
+    {
+        //Interaction4
+        //When buttonWithIcon_Menu clicked call virtual function
+        //Call clickMenu
+        clickMenu();
+    }
+    else if (&src == &buttonWithIcon_Setup)
+    {
+        //Interaction5
+        //When buttonWithIcon_Setup clicked change screen to Screen3
+        //Go to Screen3 with screen transition towards South
+        application().gotoScreen3ScreenSlideTransitionSouth();
     }
 }
