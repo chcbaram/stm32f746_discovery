@@ -33,7 +33,7 @@ public:
 protected:
     touchgfx::TextAreaWithOneWildcard textArea_Console;
 
-    static const uint16_t TEXTAREA_CONSOLE_SIZE = 512;
+    static const uint16_t TEXTAREA_CONSOLE_SIZE = 1024;
     touchgfx::Unicode::UnicodeChar textArea_ConsoleBuffer[TEXTAREA_CONSOLE_SIZE];
     ScrollableContainerText scrollableContainer_Text;
     bool scroll_enable;
