@@ -39,7 +39,7 @@ void apMain(void)
 
       usbHidJoyCurrentRead(&joy_msg);
 
-      printf("%d %d 0x%08X \r\n", (int)joy_msg.l_x, (int)joy_msg.l_y, (int)joy_msg.buttons);
+      //printf("%d %d 0x%08X \r\n", (int)joy_msg.l_x, (int)joy_msg.l_y, (int)joy_msg.buttons);
     }
   }
 }
