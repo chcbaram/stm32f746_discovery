@@ -28,4 +28,5 @@ void hwInit(void)
   uartInit();
   i2cInit();
   uartOpen(_DEF_UART1, 57600);
+  usbHidInit();
 }

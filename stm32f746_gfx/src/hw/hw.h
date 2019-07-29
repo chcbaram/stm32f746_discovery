@@ -25,7 +25,8 @@
 #include "i2c.h"
 #include "ts.h"
 #include "qspi.h"
-
+#include "usb_hid/usb_hid.h"
+#include "usb_hid/usb_hid_joy.h"
 
 
 void hwInit(void);
