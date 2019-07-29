@@ -18,7 +18,7 @@
 
 bool usbHidInit(void);
 bool usbHidStart(void);
-
+bool usbHidUpdate(void);
 
 #ifdef __cplusplus
  }

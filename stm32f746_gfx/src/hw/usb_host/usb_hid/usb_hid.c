@@ -36,7 +36,7 @@ typedef enum {
 
 
 
-USBH_HandleTypeDef hUSB_Host;
+extern USBH_HandleTypeDef hUSB_Host;
 
 
 
@@ -79,6 +79,15 @@ bool usbHidStart(void)
   osThreadDef(usbHidThread, usbHidThread, osPriorityNormal, 0, 8 * configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(usbHidThread), NULL);
 
+
+  return true;
+}
+
+bool usbHidUpdate(void)
+{
+#if (USBH_USE_OS != 1U)
+  USBH_Process(&hUSB_Host);
+#endif
 
   return true;
 }
@@ -178,11 +187,4 @@ void USBH_HID_EventCallback(USBH_HandleTypeDef * phost)
   osSemaphoreRelease(app_event);
 }
 
-#ifdef USE_USB_FS
-void OTG_FS_IRQHandler(void)
-#else
-void OTG_HS_IRQHandler(void)
-#endif
-{
-  HAL_HCD_IRQHandler(&hhcd);
-}
+

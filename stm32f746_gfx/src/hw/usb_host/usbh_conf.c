@@ -50,6 +50,10 @@
 
 HCD_HandleTypeDef hhcd;
 
+USBH_HandleTypeDef hUSB_Host;
+
+
+
 /*******************************************************************************
                        HCD BSP Routines
 *******************************************************************************/
@@ -581,6 +585,17 @@ void USBH_Delay(uint32_t Delay)
 #else
   HAL_Delay(Delay);
 #endif
+}
+
+
+
+#ifdef USE_USB_FS
+void OTG_FS_IRQHandler(void)
+#else
+void OTG_HS_IRQHandler(void)
+#endif
+{
+  HAL_HCD_IRQHandler(&hhcd);
 }
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
