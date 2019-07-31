@@ -147,7 +147,7 @@ bool usbHidJoyProcess(USBH_HandleTypeDef *phost)
       if (button == 0 || button == 1 || button == 7) q_rx_buffer[index].buttons |= (1<<JOY_BTN_L_UP);
       if (button == 1 || button == 2 || button == 3) q_rx_buffer[index].buttons |= (1<<JOY_BTN_L_RIGHT);
       if (button == 3 || button == 4 || button == 5) q_rx_buffer[index].buttons |= (1<<JOY_BTN_L_DOWN);
-      if (button == 5 || button == 6 || button == 7) q_rx_buffer[index].buttons |= (1<<JOY_BTN_L_RIGHT);
+      if (button == 5 || button == 6 || button == 7) q_rx_buffer[index].buttons |= (1<<JOY_BTN_L_LEFT);
 
       button = data[5];
       if (button & 0x80) q_rx_buffer[index].buttons |= (1<<JOY_BTN_R_UP);

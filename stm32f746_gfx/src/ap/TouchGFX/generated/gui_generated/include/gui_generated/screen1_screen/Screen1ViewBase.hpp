@@ -28,6 +28,7 @@ protected:
      */
     touchgfx::Box box1;
     touchgfx::ButtonWithLabel buttonWithLabel1;
+    touchgfx::ButtonWithLabel buttonWithLabel_HID;
 
 private:
 

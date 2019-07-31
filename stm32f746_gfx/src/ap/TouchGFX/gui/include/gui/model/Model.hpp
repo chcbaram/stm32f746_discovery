@@ -17,6 +17,9 @@ class ModelListener;
  * pointer, which is automatically configured to point to the current presenter.
  * Conversely, the current presenter can trigger events in the backend through the Model.
  */
+
+
+
 class Model
 {
 public:
@@ -50,6 +53,10 @@ protected:
     bool     port_open;
     uint8_t  port_channel;
     uint32_t port_baud;
+
+
+    void updateConsole(void);
+    void updatePad(void);
 };
 
 #endif /* MODEL_HPP */

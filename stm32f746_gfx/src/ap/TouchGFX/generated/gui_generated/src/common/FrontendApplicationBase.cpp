@@ -13,6 +13,8 @@
 #include <gui/screen2_screen/Screen2Presenter.hpp>
 #include <gui/screen3_screen/Screen3View.hpp>
 #include <gui/screen3_screen/Screen3Presenter.hpp>
+#include <gui/screen_hid_screen/Screen_HIDView.hpp>
+#include <gui/screen_hid_screen/Screen_HIDPresenter.hpp>
 
 using namespace touchgfx;
 
@@ -90,5 +92,18 @@ void FrontendApplicationBase::gotoScreen3ScreenSlideTransitionSouth()
 void FrontendApplicationBase::gotoScreen3ScreenSlideTransitionSouthImpl()
 {
     makeTransition<Screen3View, Screen3Presenter, touchgfx::SlideTransition<SOUTH>, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// Screen_HID
+
+void FrontendApplicationBase::gotoScreen_HIDScreenSlideTransitionEast()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoScreen_HIDScreenSlideTransitionEastImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoScreen_HIDScreenSlideTransitionEastImpl()
+{
+    makeTransition<Screen_HIDView, Screen_HIDPresenter, touchgfx::SlideTransition<EAST>, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 

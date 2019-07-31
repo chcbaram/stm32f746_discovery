@@ -19,8 +19,16 @@ Screen1ViewBase::Screen1ViewBase() :
     buttonWithLabel1.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel1.setAction(buttonCallback);
 
+    buttonWithLabel_HID.setXY(22, 86);
+    buttonWithLabel_HID.setBitmaps(Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
+    buttonWithLabel_HID.setLabelText(TypedText(T_SINGLEUSEID12));
+    buttonWithLabel_HID.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    buttonWithLabel_HID.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    buttonWithLabel_HID.setAction(buttonCallback);
+
     add(box1);
     add(buttonWithLabel1);
+    add(buttonWithLabel_HID);
 }
 
 void Screen1ViewBase::setupScreen()
@@ -36,5 +44,12 @@ void Screen1ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
         //When buttonWithLabel1 clicked change screen to Screen2
         //Go to Screen2 with screen transition towards East
         application().gotoScreen2ScreenSlideTransitionEast();
+    }
+    else if (&src == &buttonWithLabel_HID)
+    {
+        //Interaction2
+        //When buttonWithLabel_HID clicked change screen to Screen_HID
+        //Go to Screen_HID with screen transition towards East
+        application().gotoScreen_HIDScreenSlideTransitionEast();
     }
 }

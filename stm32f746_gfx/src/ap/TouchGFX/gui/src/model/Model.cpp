@@ -53,6 +53,14 @@ void Model::getPortInfo(bool &is_open, uint8_t &channel, uint32_t &baud)
 void Model::tick()
 {
 #ifndef SIMULATOR
+  updateConsole();
+  updatePad();
+#endif
+}
+
+void Model::updateConsole(void)
+{
+#ifndef SIMULATOR
   bool update = false;
   uint8_t data[128];
   uint8_t ch;
@@ -103,5 +111,27 @@ void Model::tick()
       modelListener->updateConsole();
     }
   }
+#endif
+}
+
+void Model::updatePad(void)
+{
+#ifndef SIMULATOR
+  touchgfx::joypad_msg_t pad_msg;
+  usb_hid_joy_msg_t joy_msg;
+
+
+  usbHidJoyCurrentRead(&joy_msg);
+
+  pad_msg.connected = usbHidJoyIsConnected();
+
+  pad_msg.l_x = joy_msg.l_x;
+  pad_msg.l_y = joy_msg.l_y;
+  pad_msg.r_x = joy_msg.r_x;
+  pad_msg.r_y = joy_msg.r_y;
+  pad_msg.buttons = joy_msg.buttons;
+
+
+  modelListener->setPadInfo(pad_msg);
 #endif
 }
