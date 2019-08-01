@@ -12,11 +12,10 @@
 
 
 
-
 void apInit(void)
 {
-  //cmdifOpen(_DEF_UART1, 57600);
-  uartOpen(_DEF_UART1, 57600);
+  cmdifOpen(_DEF_UART1, 57600);
+  //uartOpen(_DEF_UART1, 57600);
 }
 
 void apMain(void)
@@ -27,9 +26,10 @@ void apMain(void)
 
   usbHidStart();
 
+
   while(1)
   {
-    //cmdifMain();
+    cmdifMain();
 
     if (millis()-pre_time >= 500)
     {

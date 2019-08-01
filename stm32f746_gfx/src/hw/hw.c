@@ -24,9 +24,19 @@ void hwInit(void)
   cmdifInit();
 
   ledInit();
-  sdramInit();
+  //sdramInit();
   uartInit();
   i2cInit();
   uartOpen(_DEF_UART1, 57600);
   usbHidInit();
+  memInit(_HW_DEF_SDRAM_HEAP_START, _HW_DEF_SDRAM_HEAP_LENGTH);
+
+  if (sdInit() == true)
+  {
+    printf("SD OK\r\n");
+    if (fatfsInit() == true)
+    {
+      printf("FatFs OK\r\n");
+    }
+  }
 }
