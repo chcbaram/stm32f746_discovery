@@ -1,7 +1,0 @@
-{
-  "files.associations": {
-    "r_state.h": "c",
-    "m_argv.h": "c",
-    "doomfeatures.h": "c"
-  }
-}

@@ -9,7 +9,6 @@
 
 
 #include "ap.h"
-#include "doom/doom.h"
 
 
 
@@ -26,7 +25,6 @@ void apMain(void)
 
 
   usbHidStart();
-
 
   while(1)
   {

@@ -27,7 +27,6 @@
 #include "qspi.h"
 #include "mem.h"
 #include "sd.h"
-#include "fatfs/fatfs.h"
 #include "usb_hid/usb_hid.h"
 #include "usb_hid/usb_hid_joy.h"
 

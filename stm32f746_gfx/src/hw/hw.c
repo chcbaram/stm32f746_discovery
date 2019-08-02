@@ -30,13 +30,4 @@ void hwInit(void)
   uartOpen(_DEF_UART1, 57600);
   usbHidInit();
   memInit(_HW_DEF_SDRAM_HEAP_START, _HW_DEF_SDRAM_HEAP_LENGTH);
-
-  if (sdInit() == true)
-  {
-    printf("SD OK\r\n");
-    if (fatfsInit() == true)
-    {
-      printf("FatFs OK\r\n");
-    }
-  }
 }
