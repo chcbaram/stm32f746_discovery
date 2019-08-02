@@ -133,6 +133,7 @@ void SystemClock_Config(void)
 {
   RCC_ClkInitTypeDef RCC_ClkInitStruct;
   RCC_OscInitTypeDef RCC_OscInitStruct;
+
   HAL_StatusTypeDef ret = HAL_OK;
 
   /* Enable HSE Oscillator and activate PLL with HSE as source */

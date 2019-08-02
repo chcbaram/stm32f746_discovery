@@ -26,7 +26,7 @@
 
 
 bool fatfsInit(void);
-
+FRESULT fatfsScanFiles(char* path);
 
 
 #endif /* _USE_HW_FATFS */

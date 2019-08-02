@@ -75,6 +75,8 @@ bool usbHidStart(void)
   app_event = osSemaphoreCreate(osSemaphore(osSem), 1);
   osSemaphoreRelease(app_event);
 
+
+
   /* Start task */
   osThreadDef(usbHidThread, usbHidThread, osPriorityNormal, 0, 8 * configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(usbHidThread), NULL);

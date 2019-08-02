@@ -64,8 +64,12 @@ static wad_file_t *W_StdC_OpenFile(char *path)
 #else
     stdc_wad_file_t *result;
     FIL file;
+    FRESULT ret;
 
-    if (f_open (&file, path, FA_OPEN_EXISTING | FA_READ) != FR_OK)
+    ret = f_open (&file, path, FA_OPEN_EXISTING | FA_READ);
+
+    printf("f_open : %d\r\n", ret);
+    if (ret != FR_OK)
     {
       return NULL;
     }

@@ -42,15 +42,19 @@ _Min_Stack_Size = 0x400; /* required amount of stack */
 MEMORY
 {
 FLASH (rx)        : ORIGIN = 0x08000000, LENGTH = 1024K
-RAM (xrw)         : ORIGIN = 0x20000000, LENGTH = 320K
+RAM (xrw)         : ORIGIN = 0x20000000, LENGTH = 1320K
 ITCMRAM (xrw)     : ORIGIN = 0x00000000, LENGTH = 16K
 QSPI (rx)         : ORIGIN = 0x90000000, LENGTH = 16M
-SDRAM_BUFFER	  : ORIGIN = 0xC0100000, LENGTH = 1024K
+SDRAM_BUFFER(xrw) : ORIGIN = 0xC0100000, LENGTH = 1024K
 }
 
 /* Define output sections */
 SECTIONS
 {
+
+
+  
+  
   /* The startup code goes first into FLASH */
   .isr_vector :
   {
@@ -58,6 +62,18 @@ SECTIONS
     KEEP(*(.isr_vector)) /* Startup code */
     . = ALIGN(4);
   } >FLASH
+
+
+  . = ALIGN(4);
+  .bss_sdram :
+  {      
+    _sbss_sdram = .;   
+    *doom* (.bss .bss* COMMON)      
+    . = ALIGN(4);
+    _ebss_sdram = .;          
+  } >SDRAM_BUFFER
+  
+   
 
   /* The program code and other data goes into FLASH */
   .text :
@@ -128,6 +144,9 @@ SECTIONS
     _edata = .;        /* define a global symbol at data end */
   } >RAM AT> FLASH
 
+
+
+  
   
   /* Uninitialized data section */
   . = ALIGN(4);
@@ -139,6 +158,7 @@ SECTIONS
     *(.bss)
     *(.bss*)
     *(COMMON)
+
 
     . = ALIGN(4);
     _ebss = .;         /* define a global symbol at bss end */
@@ -156,6 +176,9 @@ SECTIONS
     . = ALIGN(8);
   } >RAM
 
+
+
+  
   
   /* Remove information from the standard libraries */
   /DISCARD/ :

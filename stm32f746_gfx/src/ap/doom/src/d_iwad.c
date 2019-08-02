@@ -66,6 +66,7 @@ static void AddIWADDir(char *dir)
     {
         iwad_dirs[num_iwad_dirs] = dir;
         ++num_iwad_dirs;
+        printf("AddIWADDir %s, %d\n", dir, num_iwad_dirs);
     }
 }
 
@@ -823,10 +824,12 @@ char *D_FindIWAD(int mask, GameMission_t *mission)
     // @arg <file>
     //
 
+    printf("debug 1\n");
     iwadparm = M_CheckParmWithArgs("-iwad", 1);
 
     if (iwadparm)
     {
+      printf("debug 2\n");
         // Search through IWAD dirs for an IWAD with the given name.
 
         iwadfile = myargv[iwadparm + 1];
@@ -842,6 +845,7 @@ char *D_FindIWAD(int mask, GameMission_t *mission)
     }
     else
     {
+      printf("debug 3\n");
         // Search through the list and look for an IWAD
 
         result = NULL;
@@ -850,7 +854,9 @@ char *D_FindIWAD(int mask, GameMission_t *mission)
     
         for (i=0; result == NULL && i<num_iwad_dirs; ++i)
         {
+          printf("dir %d %s \n", i, iwad_dirs[i]);
             result = SearchDirectoryForIWAD(iwad_dirs[i], mask, mission);
+
         }
     }
 

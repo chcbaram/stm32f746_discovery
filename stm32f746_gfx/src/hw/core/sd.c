@@ -117,8 +117,8 @@ void sdInitHw(void)
 
   /* Common GPIO configuration */
   gpio_init_structure.Mode      = GPIO_MODE_AF_PP;
-  gpio_init_structure.Pull      = GPIO_PULLUP;
-  gpio_init_structure.Speed     = GPIO_SPEED_HIGH;
+  gpio_init_structure.Pull      = GPIO_NOPULL;
+  gpio_init_structure.Speed     = GPIO_SPEED_FREQ_VERY_HIGH;
   gpio_init_structure.Alternate = GPIO_AF12_SDMMC1;
 
   /* GPIOC configuration */
@@ -242,13 +242,16 @@ void sdInitDetectedPin(void)
   /* GPIO configuration in input for uSD_Detect signal */
   gpio_init_structure.Pin       = GPIO_PIN_13;
   gpio_init_structure.Mode      = GPIO_MODE_INPUT;
-  gpio_init_structure.Pull      = GPIO_PULLUP;
+  gpio_init_structure.Pull      = GPIO_NOPULL;
   gpio_init_structure.Speed     = GPIO_SPEED_HIGH;
   HAL_GPIO_Init(GPIOC, &gpio_init_structure);
 }
 
 
-
+void SDMMC1_IRQHandler(void)
+{
+  HAL_SD_IRQHandler(&uSdHandle);
+}
 
 
 #if HW_USE_CMDIF_SD == 1

@@ -36,9 +36,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/lib/STM32_USB_Host_Library/Class/CDC/Inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/hw/usb_host}&quot;"/>
 								</option>
-								<option id="com.atollic.truestudio.as.symbols.defined.1224113961" name="Defined symbols" superClass="com.atollic.truestudio.as.symbols.defined" useByScannerDiscovery="false" valueType="definedSymbols">
-									<listOptionValue builtIn="false" value="DATA_IN_ExtSDRAM"/>
-								</option>
+								<option id="com.atollic.truestudio.as.symbols.defined.1224113961" name="Defined symbols" superClass="com.atollic.truestudio.as.symbols.defined" useByScannerDiscovery="false" valueType="definedSymbols"/>
 								<inputType id="com.atollic.truestudio.as.input.480499986" name="Input" superClass="com.atollic.truestudio.as.input"/>
 							</tool>
 							<tool id="com.atollic.truestudio.exe.debug.toolchain.gcc.461512883" name="C Compiler" superClass="com.atollic.truestudio.exe.debug.toolchain.gcc">
@@ -83,7 +81,6 @@
 								<option id="com.atollic.truestudio.gcc.optimization.prep_data.207741451" name="Prepare dead data removal" superClass="com.atollic.truestudio.gcc.optimization.prep_data" useByScannerDiscovery="false" value="true" valueType="boolean"/>
 								<option id="com.atollic.truestudio.gcc.symbols.defined.1438546579" name="Defined symbols" superClass="com.atollic.truestudio.gcc.symbols.defined" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="STM32F746xx"/>
-									<listOptionValue builtIn="false" value="DATA_IN_ExtSDRAM"/>
 									<listOptionValue builtIn="false" value="USE_USB_FS"/>
 									<listOptionValue builtIn="false" value="USE_BPP=16"/>
 								</option>
@@ -140,7 +137,6 @@
 								<option id="com.atollic.truestudio.gpp.optimization.prep_garbage.260055514" name="Prepare dead code removal" superClass="com.atollic.truestudio.gpp.optimization.prep_garbage" useByScannerDiscovery="false" value="true" valueType="boolean"/>
 								<option id="com.atollic.truestudio.gpp.symbols.defined.874545422" name="Defined symbols" superClass="com.atollic.truestudio.gpp.symbols.defined" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="STM32F746xx"/>
-									<listOptionValue builtIn="false" value="DATA_IN_ExtSDRAM"/>
 									<listOptionValue builtIn="false" value="USE_USB_FS"/>
 									<listOptionValue builtIn="false" value="USE_BPP=16"/>
 								</option>
@@ -174,7 +170,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="src/ap/doom|src/lib/FatFs/src/option/syscall.c|src/lib/FatFs/src/option/ccsbcs.c|src/lib/FatFs/src/option/cc950.c|src/lib/FatFs/src/option/cc949.c|src/lib/FatFs/src/option/cc936.c|src/lib/FatFs/src/option/cc932.c|src/lib/STM32_USB_Host_Library/Core/Src/usbh_conf_template.c|src/lib/STM32_USB_Host_Library/Class/MTP|src/lib/STM32_USB_Host_Library/Class/MSC|src/lib/STM32_USB_Host_Library/Class/Template|src/lib/STM32_USB_Host_Library/Class/AUDIO|src/lib/TouchGFX/touchgfx/os/OSWrappers_cmsis.cpp|src/ap/TouchGFX/simulator|src/lib/TouchGFX/touchgfx/framework/source/platform/driver/touch/SDL2TouchController.cpp|src/lib/TouchGFX/touchgfx/framework/source/platform/hal/simulator|src/bsp/FreeRTOS/Source/portable/MemMang/heap_5.c|src/bsp/FreeRTOS/Source/portable/MemMang/heap_3.c|src/bsp/FreeRTOS/Source/portable/MemMang/heap_2.c|src/bsp/FreeRTOS/Source/portable/MemMang/heap_1.c|src/bsp/FreeRTOS/Source/portable/Common" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="src/lib/FatFs/src/option/syscall.c|src/lib/FatFs/src/option/ccsbcs.c|src/lib/FatFs/src/option/cc950.c|src/lib/FatFs/src/option/cc949.c|src/lib/FatFs/src/option/cc936.c|src/lib/FatFs/src/option/cc932.c|src/lib/STM32_USB_Host_Library/Core/Src/usbh_conf_template.c|src/lib/STM32_USB_Host_Library/Class/MTP|src/lib/STM32_USB_Host_Library/Class/MSC|src/lib/STM32_USB_Host_Library/Class/Template|src/lib/STM32_USB_Host_Library/Class/AUDIO|src/lib/TouchGFX/touchgfx/os/OSWrappers_cmsis.cpp|src/ap/TouchGFX/simulator|src/lib/TouchGFX/touchgfx/framework/source/platform/driver/touch/SDL2TouchController.cpp|src/lib/TouchGFX/touchgfx/framework/source/platform/hal/simulator|src/bsp/FreeRTOS/Source/portable/MemMang/heap_5.c|src/bsp/FreeRTOS/Source/portable/MemMang/heap_3.c|src/bsp/FreeRTOS/Source/portable/MemMang/heap_2.c|src/bsp/FreeRTOS/Source/portable/MemMang/heap_1.c|src/bsp/FreeRTOS/Source/portable/Common" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -278,7 +274,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="src/ap/doom|src/lib/FatFs/src/option/syscall.c|src/lib/FatFs/src/option/ccsbcs.c|src/lib/FatFs/src/option/cc950.c|src/lib/FatFs/src/option/cc949.c|src/lib/FatFs/src/option/cc936.c|src/lib/FatFs/src/option/cc932.c|src/lib/STM32_USB_Host_Library/Core/Src/usbh_conf_template.c|src/lib/STM32_USB_Host_Library/Class/MTP|src/lib/STM32_USB_Host_Library/Class/MSC|src/lib/STM32_USB_Host_Library/Class/Template|src/lib/STM32_USB_Host_Library/Class/AUDIO|src/lib/TouchGFX/touchgfx/os/OSWrappers_cmsis.cpp|src/ap/TouchGFX/simulator|src/lib/TouchGFX/touchgfx/framework/source/platform/driver/touch/SDL2TouchController.cpp|src/lib/TouchGFX/touchgfx/framework/source/platform/hal/simulator|src/bsp/FreeRTOS/Source/portable/MemMang/heap_5.c|src/bsp/FreeRTOS/Source/portable/MemMang/heap_3.c|src/bsp/FreeRTOS/Source/portable/MemMang/heap_2.c|src/bsp/FreeRTOS/Source/portable/MemMang/heap_1.c|src/bsp/FreeRTOS/Source/portable/Common" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="src/lib/FatFs/src/option/syscall.c|src/lib/FatFs/src/option/ccsbcs.c|src/lib/FatFs/src/option/cc950.c|src/lib/FatFs/src/option/cc949.c|src/lib/FatFs/src/option/cc936.c|src/lib/FatFs/src/option/cc932.c|src/lib/STM32_USB_Host_Library/Core/Src/usbh_conf_template.c|src/lib/STM32_USB_Host_Library/Class/MTP|src/lib/STM32_USB_Host_Library/Class/MSC|src/lib/STM32_USB_Host_Library/Class/Template|src/lib/STM32_USB_Host_Library/Class/AUDIO|src/lib/TouchGFX/touchgfx/os/OSWrappers_cmsis.cpp|src/ap/TouchGFX/simulator|src/lib/TouchGFX/touchgfx/framework/source/platform/driver/touch/SDL2TouchController.cpp|src/lib/TouchGFX/touchgfx/framework/source/platform/hal/simulator|src/bsp/FreeRTOS/Source/portable/MemMang/heap_5.c|src/bsp/FreeRTOS/Source/portable/MemMang/heap_3.c|src/bsp/FreeRTOS/Source/portable/MemMang/heap_2.c|src/bsp/FreeRTOS/Source/portable/MemMang/heap_1.c|src/bsp/FreeRTOS/Source/portable/Common" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

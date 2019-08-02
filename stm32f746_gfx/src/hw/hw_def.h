@@ -25,7 +25,7 @@
 #define      HW_USE_CMDIF_SD        1
 
 #define _USE_HW_FATFS
-
+#define      HW_CMDIF_FATFS         1
 
 #define _USE_HW_LED
 #define      HW_LED_MAX_CH          1

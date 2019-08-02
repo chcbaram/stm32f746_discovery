@@ -9,6 +9,7 @@
 
 
 #include "ap.h"
+#include "doom/doom.h"
 
 
 

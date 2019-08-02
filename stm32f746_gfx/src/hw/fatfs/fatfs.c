@@ -13,7 +13,7 @@
 
 #ifdef _USE_HW_FATFS
 #include <stdbool.h>
-#include "hw.h"
+#include "cmdif.h"
 #include "lib/FatFs/src/ff_gen_drv.h"
 #include "driver/sd_diskio.h"
 
@@ -32,9 +32,9 @@ char  SDPath[4];  /* SD disk logical drive path */
 
 //-- Internal Functions
 //
-#ifdef _USE_HW_CMDIF_SD
+#if HW_CMDIF_FATFS == 1
 void fatfsCmdifInit(void);
-int  fatfsCmdif(int argc, char **argv);
+void fatfsCmdif(void);
 #endif
 
 void fatfsPrintErr(FRESULT res);
@@ -62,7 +62,7 @@ bool fatfsInit(void)
     }
   }
 
-#ifdef _USE_HW_CMDIF_FATFS
+#if HW_CMDIF_FATFS == 1
   fatfsCmdifInit();
 #endif
 
@@ -191,7 +191,7 @@ FRESULT fatfsScanFiles(char* path)
 
 
 
-#ifdef _USE_HW_CMDIF_FATFS
+#if HW_CMDIF_FATFS == 1
 void fatfsCmdifInit(void)
 {
   if (cmdifIsInit() == false)
@@ -201,13 +201,13 @@ void fatfsCmdifInit(void)
   cmdifAdd("fatfs", fatfsCmdif);
 }
 
-int fatfsCmdif(int argc, char **argv)
+void fatfsCmdif(void)
 {
   bool ret = true;
   sd_info_t sd_info;
   uint8_t buf[255];
 
-  if (argc == 2 && strcmp("info", argv[1]) == 0)
+  if (cmdifGetParamCnt() == 1 && cmdifHasString("info", 0) == true)
   {
     cmdifPrintf("fatfs init      : %d\n", is_init);
 
@@ -235,7 +235,7 @@ int fatfsCmdif(int argc, char **argv)
       }
     }
   }
-  else if (argc == 2 && strcmp("dir", argv[1]) == 0)
+  else if (cmdifGetParamCnt() == 1 && cmdifHasString("dir", 0) == true)
   {
     FRESULT res;
 
@@ -257,8 +257,6 @@ int fatfsCmdif(int argc, char **argv)
     cmdifPrintf( "fatfs info \n");
     cmdifPrintf( "fatfs dir \n");
   }
-
-  return 0;
 }
 #endif /* _USE_HW_CMDIF_FATFS */
 

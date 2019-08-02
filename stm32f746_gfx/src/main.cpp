@@ -29,7 +29,7 @@ int main(void)
 
   touchgfxMain();
 
-  osThreadDef(threadMain, threadMain, osPriorityNormal, 0, 4096 / 4);
+  osThreadDef(threadMain, threadMain, osPriorityNormal, 0, 8*1024 / 4);
   osThreadCreate(osThread(threadMain), NULL);
 
   osKernelStart();
